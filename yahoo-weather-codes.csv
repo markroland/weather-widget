@@ -1,0 +1,50 @@
+Code,Description,Image
+0,tornado,unknown.png
+1,tropical storm,unknown.png
+2,hurricane,unknown.png
+3,severe thunderstorms,tstorms.png
+4,thunderstorms,tstorms.png
+5,mixed rain and snow,sleet.png
+6,mixed rain and sleet,sleet.png
+7,mixed snow and sleet,sleet.png
+8,freezing drizzle,sleet.png
+9,drizzle,rain.png
+10,freezing rain,sleet.png
+11,showers,rain.png
+12,showers,rain.png
+13,snow flurries,flurries.png
+14,light snow showers,flurries.png
+15,blowing snow,snow.png
+16,snow,snow.png
+17,hail,sleet.png
+18,sleet,sleet.png
+19,dust,unknown.png
+20,foggy,fog.png
+21,haze,hazy.png
+22,smoky,unknown.png
+23,blustery,unknown.png
+24,windy,unknown.png
+25,cold,unknown.png
+26,cloudy,cloudy.png
+27,mostly cloudy (night),nt_mostlycloudy.png
+28,mostly cloudy (day),mostlycloudy.png
+29,partly cloudy (night),nt_partlycloudy.png
+30,partly cloudy (day),partlycloudy.png
+31,clear (night),nt_clear.png
+32,sunny,clear.png
+33,fair (night),nt_clear.png
+34,fair (day),clear.png
+35,mixed rain and hail,sleet.png
+36,hot,clear.png
+37,isolated thunderstorms,tstorms.png
+38,scattered thunderstorms,tstorms.png
+39,scattered thunderstorms,tstorms.png
+40,scattered showers,rain.png
+41,heavy snow,snow.png
+42,scattered snow showers,snow.png
+43,heavy snow,snow.png
+44,partly cloudy,partlycloudy.png
+45,thundershowers,tstorms.png
+46,snow showers,snow.png
+47,isolated thundershowers,tstorms.png
+3200,not available,unknown.png
