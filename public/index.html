@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset=utf-8>
+    <title>Weather Widget</title>
+    <style type="text/css">
+        #weather_widget{
+            width: 560px;
+            margin: 10px auto;
+            padding: 0 10px;
+            border: 1px solid #CCC;
+            background-color: #FFF;
+            font-family: Helvetica, Arial, Sans-serif;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
+        }
+        #weather_widget h1{
+            font-size: 18px;
+        }
+        #weather_widget p{
+            font-size: 14px;
+        }
+        img#condition-image {
+            display: block;
+            margin: 0 auto;
+        }
+        select#condition-select {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="weather_widget">
+        <h1>Weather Conditions at Eaton Hall in Lawrence, Kansas</h1>
+        <img id="condition-image" src="images/unknown.png" width="512" height="200" alt="Unknown" />
+        <select id="condition-select"></select>
+        <script>
+            const weatherConditions = [
+                {"condition": "Unknown", "img": "unknown.png"},
+                {"condition": "Clear", "img": "clear.png"},
+                {"condition": "Mostly Sunny", "img": "mostlysunny.png"},
+                {"condition": "Partly Cloudy", "img": "partlycloudy.png"},
+                {"condition": "Partly Sunny", "img": "partlysunny.png"},
+                {"condition": "Mostly Cloudy", "img": "mostlycloudy.png"},
+                {"condition": "Cloudy", "img": "cloudy.png"},
+                {"condition": "Hazy", "img": "hazy.png"},
+                {"condition": "Foggy", "img": "fog.png"},
+                {"condition": "Rain", "img": "rain.png"},
+                {"condition": "Sleet", "img": "sleet.png"},
+                {"condition": "Flurries", "img": "flurries.png"},
+                {"condition": "Chance of Snow", "img": "chancesnow.png"},
+                {"condition": "Snow", "img": "snow.png"},
+                {"condition": "Chance of Thunderstorms", "img": "chancetstorms.png"},
+                {"condition": "Thunderstorms", "img": "tstorms.png"},
+                {"condition": "Nighttime Chance of Flurries", "img": "nt_chanceflurries.png"},
+                // {"condition": "Nighttime Chance of Rain", "img": "nt_chancerain.png"},
+                {"condition": "Nighttime Chance of Sleet", "img": "nt_chancesleet.png"},
+                {"condition": "Nighttime Chance of Snow", "img": "nt_chancesnow.png"},
+                {"condition": "Nighttime Chance of Thunderstorms", "img": "nt_chancetstorms.png"},
+
+                {"condition": "Nighttime Clear", "img": "nt_clear.png"},
+                {"condition": "Nighttime Cloudy", "img": "nt_cloudy.png"},
+                {"condition": "Nighttime Hazy", "img": "nt_hazy.png"},
+                {"condition": "Nighttime Foggy", "img": "nt_fog.png"},
+                {"condition": "Nighttime Partly Cloudy", "img": "nt_partlycloudy.png"},
+                {"condition": "Nighttime Mostly Clear", "img": "nt_mostlysunny.png"},
+                {"condition": "Nighttime Partly Clear", "img": "nt_partlysunny.png"},
+                {"condition": "Nighttime Mostly Cloudy", "img": "nt_mostlycloudy.png"},
+                {"condition": "Nighttime Rain", "img": "nt_rain.png"},
+                {"condition": "Nighttime Sleet", "img": "nt_sleet.png"},
+                {"condition": "Nighttime Snow", "img": "nt_snow.png"},
+                {"condition": "Nighttime Thunderstorms", "img": "nt_tstorms.png"},
+                {"condition": "Nighttime Unknown", "img": "nt_unknown.png"},
+
+                {"condition": "Winter Clear", "img": "wtr_clear.png"},
+                // {"condition": "Winter Sunny", "img": "wtr_sunny.png"},
+                {"condition": "Winter Cloudy", "img": "wtr_cloudy.png"},
+                {"condition": "Winter Foggy", "img": "wtr_fog.png"},
+                {"condition": "Winter Mostly Sunny", "img": "wtr_mostlysunny.png"},
+                {"condition": "Winter Partly Cloudy", "img": "wtr_partlycloudy.png"},
+                {"condition": "Winter Partly Sunny", "img": "wtr_partlysunny.png"},
+                {"condition": "Winter Mostly Cloudy", "img": "wtr_mostlycloudy.png"},
+            ];
+
+            // Populate the select menu with options
+            const conditionSelect = document.getElementById('condition-select');
+            weatherConditions.forEach(condition => {
+                const option = document.createElement('option');
+                option.value = condition.img;
+                option.textContent = condition.condition;
+                conditionSelect.appendChild(option);
+            });
+
+            // Update the image when the select menu value changes
+            conditionSelect.addEventListener('change', function() {
+                const selectedImage = this.value;
+                const selectedCondition = this.options[this.selectedIndex].text;
+                const conditionImage = document.getElementById('condition-image');
+                conditionImage.src = `images/${selectedImage}`;
+                conditionImage.alt = selectedCondition;
+            });
+
+            // Function to cycle through options
+            let currentIndex = 0;
+            const cycleOptions = () => {
+                currentIndex = (currentIndex + 1) % weatherConditions.length;
+                conditionSelect.selectedIndex = currentIndex;
+                conditionSelect.dispatchEvent(new Event('change'));
+            };
+
+            // Start cycling through options every 3 seconds
+            let cycleInterval = setInterval(cycleOptions, 3000);
+
+            // Stop cycling when the user clicks on the select menu
+            conditionSelect.addEventListener('click', () => {
+                clearInterval(cycleInterval);
+            });
+
+            // Trigger change event to set initial image and alt text
+            conditionSelect.dispatchEvent(new Event('change'));
+
+        </script>
+    </div>
+</body>
+</html>

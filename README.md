@@ -11,5 +11,5 @@ The code was refactored in 2018 to fail gracefully since the Yahoo Weather API h
 ## Run
 
 ```
-php -S localhost:8000
+php -S localhost:8000 -t public
 ```
